@@ -1,22 +1,26 @@
-fun cinemaHall() {
-    println("""
-        Cinema:
-          1 2 3 4 5 6 7 8
-        1 S S S S S S S S
-        2 S S S S S S S S
-        3 S S S S S S S S
-        4 S S S S S S S S
-        5 S S S S S S S S
-        6 S S S S S S S S
-        7 S S S S S S S S
-    """.trimIndent())
+fun cinemaHall(rows: Int, cols: Int, ticketR: Int = 0, ticketC: Int = 0) {
+    println("Cinema:")
+    print(" ")
+    for (i in 1..cols) {
+        print(" $i")
+    }
+    println()
+    for (i in 1..rows) {
+        print("$i")
+        for (j in 1..cols) {
+            when {
+                i == ticketR && j == ticketC -> print(" B")
+                else -> print(" S")
+            }
+        }
+        println()
+    }
 }
 
 const val tenDollars = 10
 const val eightDollars = 8
 
 fun main() {
-    cinemaHall()
 
     println("Enter the number of rows:")
     val rows = readln().toInt()
@@ -24,12 +28,20 @@ fun main() {
     println("Enter the number of seats in each row:")
     val cols = readln().toInt()
 
-    println("Total income:")
-    print(when {
-        rows * cols <= 60 -> "$${rows * cols * tenDollars}"
+    cinemaHall(rows, cols)
+
+    println("Enter a row number:")
+    val ticketRow = readln().toInt()
+
+    println("Enter a seat number in that row:")
+    val ticketCol = readln().toInt()
+
+    print("Ticket price: $")
+    println(when {
+        rows * cols <= 60 -> tenDollars
         else -> {
-            val hallHalf = rows / 2
-            "$${(hallHalf * cols * tenDollars) + (rows - hallHalf) * cols * eightDollars}"
+            if(ticketRow <= rows / 2) tenDollars else eightDollars
         }
     })
+    cinemaHall(rows, cols, ticketRow, ticketCol)
 }

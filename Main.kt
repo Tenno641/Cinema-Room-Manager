@@ -26,10 +26,10 @@ fun main() {
 
     println("Total income:")
     print(when {
-        rows * cols <= 60 -> rows * cols * tenDollars
+        rows * cols <= 60 -> "$${rows * cols * tenDollars}"
         else -> {
             val hallHalf = rows / 2
-            (hallHalf * cols * tenDollars) + (rows - hallHalf) * cols * eightDollars
+            "$${(hallHalf * cols * tenDollars) + (rows - hallHalf) * cols * eightDollars}"
         }
     })
 }

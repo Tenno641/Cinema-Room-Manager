@@ -1,8 +1,3 @@
-// as an empty list
-val board = mutableListOf(
-    MutableList(1) {'t'}
-)
-
 const val tenDollars = 10
 const val eightDollars = 8
 
@@ -14,7 +9,7 @@ fun main() {
     println("Enter the number of seats in each row:")
     val cols = readln().toInt()
 
-    for (i in 1..cols) { board.add(MutableList(cols) {'S'}) }
+    val board = MutableList(rows + 1) {MutableList(cols) {'S'} }
 
     do {
         println("1. Show the seats\n2. Buy a ticket\n0. Exit")

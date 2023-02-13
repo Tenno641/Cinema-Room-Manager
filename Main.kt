@@ -1,4 +1,7 @@
-val board = mutableListOf<MutableList<Char>>()
+// as an empty list
+val board = mutableListOf(
+    MutableList(1) {'t'}
+)
 
 const val tenDollars = 10
 const val eightDollars = 8
